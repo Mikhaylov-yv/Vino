@@ -11,12 +11,39 @@ FileName1 = 'winequality-red.csv'
 myFile1 = open(FileName1, 'r',newline='')
 df = pd.read_csv(FileName1, sep = ';')
 print(df['quality'].value_counts())
-
+i=0
 print(df.head())
 print(df.info())
 df['quality'].value_counts().plot(kind='bar', label='quality')
-plt.show()
+i=i+1
+plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=100)
+plt.clf()
 #Строим корреляцию
 corr_matrix = df.corr()
 sns.heatmap(corr_matrix)
-plt.show()
+i=i+1
+plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=100)
+plt.clf()
+#plt.show()
+
+sns.set(style="ticks", palette="pastel")
+
+
+# Draw a nested boxplot to show bills by day and time
+sns.boxplot(x="quality", y="alcohol",
+             palette=["m", "g"],
+            data=df)
+sns.despine(offset=10, trim=True)
+i=i+1
+plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=100)
+plt.clf()
+#plt.show()
+
+sns.palplot(sns.light_palette("green"))
+sns.relplot(x="alcohol", y="sulphates", hue="citric acid", size="quality",
+            sizes=(10, 150), alpha=.5,
+            height=6, data=df)
+i=i+1
+plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=100)
+plt.clf()
+#plt.show()
