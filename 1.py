@@ -39,11 +39,11 @@ plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dp
 plt.clf()
 #plt.show()
 
-sns.palplot(sns.light_palette("green"))
+pal = sns.palplot(sns.color_palette("BuGn_r"))
 sns.relplot(x="alcohol", y="sulphates", hue="citric acid", size="quality",
-            sizes=(10, 150), alpha=.5,
+            sizes=(4, 150), alpha=.5, palette=pal,
             height=6, data=df)
 i=i+1
-plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=100)
+plt.savefig(str('Вино график №' + str(i)) + '.png', format='png', dpi=400)
 plt.clf()
 #plt.show()
